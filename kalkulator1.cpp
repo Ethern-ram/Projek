@@ -44,7 +44,7 @@ int main()
     }
     
     switch (pilih) {
-      case 1: {
+      case 1: { //tambah
         double a, b;
         cout << "Masukkan a dan b: ";
         if (!(cin >> a >> b)) {cout << "Input salah,\n"; clearInput(); break; clearInput(); break;}
@@ -52,7 +52,7 @@ int main()
         break;
       }
 
-      case 2: {
+      case 2: { //kurang
         double a, b;
         cout << "Masukkan a dan b: ";
         if (!(cin >> a >> b)) {cout << "Input salah,\n"; clearInput(); break; clearInput(); break;}
@@ -61,7 +61,7 @@ int main()
       }
       
 
-      case 3: {
+      case 3: { //kali
         double a, b;
         cout << "Masukkan a dan b: ";
         if (!(cin >> a >> b)) {cout << "Input salah,\n"; clearInput(); break; clearInput(); break;}
@@ -69,7 +69,7 @@ int main()
         break;
       }
       
-      case 4: {
+      case 4: { //bagi
         double a, b;
         cout << "Masukkan a dan b: ";
         if (!(cin >> a >> b)) {cout << "Input salah,\n"; clearInput(); break; clearInput(); break;}
@@ -81,6 +81,36 @@ int main()
         }
         break;
       }
+
+      case 5: { //modulus
+        int a, b;
+        cout << "Masukkan a dan b: ";
+        if (!(cin >> a >> b)) {cout << "Input salah,\n";clearInput(); break; }
+        if (b == 0) cout << "Error: Modulus dengan 0.\n";
+        else cout << "Hasil: " << (a % b) << "\n";
+        break;
+      }
+      
+      case 6: { //pangkat
+        double a, b;
+        cout << "Masukkan a dan b: ";
+        if (!(cin >> a >> b)) {cout << "Input salah,\n";clearInput(); break; }
+        cout << "Hasil: " << pow(a, b) << "\n";
+        break;
+      }
+      
+      case 7: { //akar
+        double a, b;
+        cout << "Masukkan a dan b: ";
+        if (!(cin >> a >> b)) {cout << "Input salah,\n";clearInput(); break; }
+        if (a < 0 || b < 0) {
+          cout << "Error: Akar dari bilangan negatif.\n";
+        } else {
+          cout << "Hasil: " << sqrt(a) << "\n";
+        }
+        break;
+      }
+
       default:
         cout << "Pilihan ga valid\n";
     }
