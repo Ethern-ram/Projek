@@ -10,6 +10,12 @@ void clearInput() {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
+void waitEnter() {
+    cout << "\nTekan ENTER untuk lanjut...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // buang sisa input sampai newline
+    cin.get(); // tunggu ENTER
+}
+
 void showMenu() {
     cout << "\n=== KALKULATOR LENGKAP ===\n";
     cout << "1. Tambah (+)\n";
@@ -31,12 +37,6 @@ void showMenu() {
     cout << "Pilih: ";
 }
 
-void waitEnter() {
-  cout << "\nTekan ENTER untuk lanjut...";
-  cin.ignore(numeric_limits<streamsize>::max(), '\n');
-  cin.get();
-}
-
 int main() {
     int pilih;
     double mem = 0.0;
@@ -48,6 +48,7 @@ int main() {
         if (!(cin >> pilih)) {
             cout << "Input harus angka.\n";
             clearInput();
+            waitEnter();
             continue;
         }
 
@@ -57,101 +58,163 @@ int main() {
         }
 
         switch (pilih) {
-            case 1: {
+            case 1: { // tambah
                 double a, b;
                 cout << "Masukkan a b: ";
-                if (!(cin >> a >> b)) { cout << "Input salah.\n"; clearInput(); break; }
+                if (!(cin >> a >> b)) {
+                    cout << "Input salah.\n";
+                    clearInput();
+                    waitEnter();
+                    break;
+                }
                 double result = a + b;
                 cout << "Hasil: " << result << "\n";
                 history.push_back(result);
                 waitEnter();
                 break;
             }
-            case 2: {
+
+            case 2: { // kurang
                 double a, b;
                 cout << "Masukkan a b: ";
-                if (!(cin >> a >> b)) { cout << "Input salah.\n"; clearInput(); break; }
+                if (!(cin >> a >> b)) {
+                    cout << "Input salah.\n";
+                    clearInput();
+                    waitEnter();
+                    break;
+                }
                 double result = a - b;
                 cout << "Hasil: " << result << "\n";
                 history.push_back(result);
                 waitEnter();
                 break;
             }
-            case 3: {
+
+            case 3: { // kali
                 double a, b;
                 cout << "Masukkan a b: ";
-                if (!(cin >> a >> b)) { cout << "Input salah.\n"; clearInput(); break; }
+                if (!(cin >> a >> b)) {
+                    cout << "Input salah.\n";
+                    clearInput();
+                    waitEnter();
+                    break;
+                }
                 double result = a * b;
                 cout << "Hasil: " << result << "\n";
                 history.push_back(result);
                 waitEnter();
                 break;
             }
-            case 4: {
+
+            case 4: { // bagi
                 double a, b;
                 cout << "Masukkan a b: ";
-                if (!(cin >> a >> b)) { cout << "Input salah.\n"; clearInput(); break; }
+                if (!(cin >> a >> b)) {
+                    cout << "Input salah.\n";
+                    clearInput();
+                    waitEnter();
+                    break;
+                }
                 if (b == 0) {
                     cout << "Error: pembagian dengan 0.\n";
-                } else {
-                    double result = a / b;
-                    cout << "Hasil: " << result << "\n";
-                    history.push_back(result);
+                    waitEnter();
+                    break;
                 }
+                double result = a / b;
+                cout << "Hasil: " << result << "\n";
+                history.push_back(result);
                 waitEnter();
                 break;
             }
-            case 5: {
+
+            case 5: { // modulus
                 int a, b;
                 cout << "Masukkan a b (integer): ";
-                if (!(cin >> a >> b)) { cout << "Input salah.\n"; clearInput(); break; }
-                if (b == 0) cout << "Error: modulo dengan 0.\n";
-                else {
-                    int r = a % b;
-                    cout << "Hasil: " << r << "\n";
-                    history.push_back((double)r);
+                if (!(cin >> a >> b)) {
+                    cout << "Input salah.\n";
+                    clearInput();
+                    waitEnter();
+                    break;
                 }
+                if (b == 0) {
+                    cout << "Error: modulo dengan 0.\n";
+                    waitEnter();
+                    break;
+                }
+                int r = a % b;
+                cout << "Hasil: " << r << "\n";
+                history.push_back((double)r);
                 waitEnter();
                 break;
             }
-            case 6: {
+
+            case 6: { // pangkat
                 double a, b;
                 cout << "Masukkan a b (a^b): ";
-                if (!(cin >> a >> b)) { cout << "Input salah.\n"; clearInput(); break; }
+                if (!(cin >> a >> b)) {
+                    cout << "Input salah.\n";
+                    clearInput();
+                    waitEnter();
+                    break;
+                }
                 double result = pow(a, b);
                 cout << "Hasil: " << result << "\n";
                 history.push_back(result);
                 waitEnter();
                 break;
             }
-            case 7: {
+
+            case 7: { // akar
                 double a;
                 cout << "Masukkan a: ";
-                if (!(cin >> a)) { cout << "Input salah.\n"; clearInput(); break; }
-                if (a < 0) cout << "Error: akar negatif tidak bisa (real).\n";
-                else {
-                    double result = sqrt(a);
-                    cout << "Hasil: " << result << "\n";
-                    history.push_back(result);
+                if (!(cin >> a)) {
+                    cout << "Input salah.\n";
+                    clearInput();
+                    waitEnter();
+                    break;
                 }
+                if (a < 0) {
+                    cout << "Error: akar negatif tidak bisa (real).\n";
+                    waitEnter();
+                    break;
+                }
+                double result = sqrt(a);
+                cout << "Hasil: " << result << "\n";
+                history.push_back(result);
                 waitEnter();
                 break;
             }
-            case 8: {
+
+            case 8: { // persen
                 double a, b;
                 cout << "Masukkan a b (a% dari b): ";
-                if (!(cin >> a >> b)) { cout << "Input salah.\n"; clearInput(); break; }
+                if (!(cin >> a >> b)) {
+                    cout << "Input salah.\n";
+                    clearInput();
+                    waitEnter();
+                    break;
+                }
                 double result = (a / 100.0) * b;
                 cout << "Hasil: " << result << "\n";
                 history.push_back(result);
                 waitEnter();
                 break;
             }
-            case 9: {
+
+            case 9: { // faktorial
                 int n;
                 cout << "Masukkan n (0-20 aman untuk long long): ";
-                if (!(cin >> n)) { cout << "Input salah.\n"; clearInput(); break; }
-                if (n < 0) { cout << "Error: faktorial negatif.\n"; break; }
+                if (!(cin >> n)) {
+                    cout << "Input salah.\n";
+                    clearInput();
+                    waitEnter();
+                    break;
+                }
+                if (n < 0) {
+                    cout << "Error: faktorial negatif.\n";
+                    waitEnter();
+                    break;
+                }
 
                 long long fact = 1;
                 for (int i = 2; i <= n; i++) fact *= i;
@@ -162,38 +225,55 @@ int main() {
                 break;
             }
 
-            case 10: {
+            case 10: { // MC
                 mem = 0.0;
                 cout << "Memory cleared (mem = 0)\n";
                 waitEnter();
                 break;
             }
-            case 11: {
+
+            case 11: { // MR
                 cout << "Memory: " << mem << "\n";
                 waitEnter();
                 break;
             }
-            case 12: {
+
+            case 12: { // M+
                 double x;
                 cout << "Masukkan nilai untuk M+: ";
-                if (!(cin >> x)) { cout << "Input salah.\n"; clearInput(); break; }
+                if (!(cin >> x)) {
+                    cout << "Input salah.\n";
+                    clearInput();
+                    waitEnter();
+                    break;
+                }
                 mem += x;
                 cout << "Memory sekarang: " << mem << "\n";
                 waitEnter();
                 break;
             }
-            case 13: {
+
+            case 13: { // M-
                 double x;
                 cout << "Masukkan nilai untuk M-: ";
-                if (!(cin >> x)) { cout << "Input salah.\n"; clearInput(); break; }
+                if (!(cin >> x)) {
+                    cout << "Input salah.\n";
+                    clearInput();
+                    waitEnter();
+                    break;
+                }
                 mem -= x;
                 cout << "Memory sekarang: " << mem << "\n";
                 waitEnter();
                 break;
             }
 
-            case 14: {
-                if (history.empty()) { cout << "History kosong.\n"; break; }
+            case 14: { // history
+                if (history.empty()) {
+                    cout << "History kosong.\n";
+                    waitEnter();
+                    break;
+                }
                 cout << "=== HISTORY (" << history.size() << ") ===\n";
                 for (size_t i = 0; i < history.size(); i++) {
                     cout << i + 1 << ". " << history[i] << "\n";
@@ -201,7 +281,8 @@ int main() {
                 waitEnter();
                 break;
             }
-            case 15: {
+
+            case 15: { // clear history
                 history.clear();
                 cout << "History cleared.\n";
                 waitEnter();
@@ -210,6 +291,8 @@ int main() {
 
             default:
                 cout << "Pilihan ga valid.\n";
+                waitEnter();
+                break;
         }
     }
 
