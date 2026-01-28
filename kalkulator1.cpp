@@ -44,6 +44,43 @@ int main()
     }
     
     switch (pilih) {
+      case 1: {
+        double a, b;
+        cout << "Masukkan a dan b: ";
+        if (!(cin >> a >> b)) {cout << "Input salah,\n"; clearInput(); break; clearInput(); break;}
+        cout << "Hasil: " << (a+b) << "\n";
+        break;
+      }
+
+      case 2: {
+        double a, b;
+        cout << "Masukkan a dan b: ";
+        if (!(cin >> a >> b)) {cout << "Input salah,\n"; clearInput(); break; clearInput(); break;}
+        cout << "Hasil: " << (a-b) << "\n";
+        break;
+      }
+      
+
+      case 3: {
+        double a, b;
+        cout << "Masukkan a dan b: ";
+        if (!(cin >> a >> b)) {cout << "Input salah,\n"; clearInput(); break; clearInput(); break;}
+        cout << "Hasil: " << (a*b) << "\n";
+        break;
+      }
+      
+      case 4: {
+        double a, b;
+        cout << "Masukkan a dan b: ";
+        if (!(cin >> a >> b)) {cout << "Input salah,\n"; clearInput(); break; clearInput(); break;}
+        
+        if (b == 0) {
+          cout << "Error: pembagian dengan 0.\n";
+        } else {
+          cout << "Hasil: " << (a/b) << "\n";
+        }
+        break;
+      }
       default:
         cout << "Pilihan ga valid\n";
     }
